@@ -1,0 +1,63 @@
+<%- include('emptyHeader') %>
+
+<div class="img_login_register">
+  <img src="/img/book5small.jpg" alt="" />
+</div>
+<div class="login_register_container">
+  <form class="login_register_form">
+    <h2>Login</h2>
+    <div class="formContainer">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        placeholder="email"
+        required
+        class="formInput"
+      />
+      <p class="formErrorEmail"></p>
+    </div>
+    <div class="formContainer">
+      <div class="password_forgot">
+        <label for="password">Password</label>
+        <p class="forgotPassword">Forgot password ?</p>
+      </div>
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        required
+        class="formInput"
+      />
+      <p class="formErrorPassword"></p>
+    </div>
+
+    <div class="formContainer">
+      <button type="submit">Login</button>
+    </div>
+    <div>
+      <p class="account">
+        Don't have an account? <a href="/user/register">Register</a>
+      </p>
+    </div>
+  </form>
+</div>
+
+<script>
+  const form = document.querySelector("form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = form.email.value;
+    const password = form.password.value;
+
+    const res = await fetch("/user/login", {
+      method: "POST",
+
+      headers: { "Content-Type": "Application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+  });
+</script>

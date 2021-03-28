@@ -1,0 +1,63 @@
+<%- include('header') %>
+<h1>Book Upload</h1>
+
+<form action="/upload" method="POST" enctype="multipart/form-data">
+  <div>
+    <label for="BookAuthor">Book Author</label>
+    <input type="text" name="BookAuthor" placeholder="Book Author" />
+  </div>
+  <div>
+    <label for="BookYear">Book Year</label>
+    <input type="text" name="BookYear" placeholder="Book year" />
+  </div>
+  <div>
+    <label for="BookLanguage">Language</label>
+    <input
+      type="text"
+      name="BookLanguage"
+      placeholder="Book Language"
+      required
+    />
+  </div>
+  <div>
+    <label for="BookPages">Book pages</label>
+    <input type="text" name="BookPages" placeholder="Book pages" />
+  </div>
+  <div>
+    <label for="BookPublisher">Book Publisher</label>
+    <input type="text" name="BookPublisher" placeholder="Book publisher" />
+  </div>
+  <div>
+    <label for="BookCategory"></label>
+    <select name="BookCategory">
+      <option value="computer/programming">Computer/Programming</option>
+      <option value="computer/css">Computer/CSS</option>
+      <option value="english/literature">English/Literature</option>
+      <option value="linguistic/english">English/Linguistic</option>
+      <option value="linguistic/english">English/Linguistic</option>
+    </select>
+  </div>
+  <div>
+    <label for="ISBN">ISBN</label>
+    <input type="text" name="ISBN" placeholder="ISBN" />
+  </div>
+  <div>
+    <label for="avatar">Image</label>
+    <input type="file" name="avatar" />
+  </div>
+
+  <div>
+    <label for="pdf">PDF</label>
+    <input type="file" name="pdf" />
+  </div>
+
+  <button type="submit">submit</button>
+</form>
+
+<img src="https://bookstore-20.s3.us-east-2.amazonaws.com/amoysoy.jpg" />
+<a
+  download="pdf"
+  href="https://bookstore-20.s3.us-east-2.amazonaws.com/TypeScript+Programming+Language+by+TypeScript+Publishing.pdf"
+  download=""
+  >Download file</a
+>

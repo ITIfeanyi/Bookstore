@@ -1,0 +1,75 @@
+<%- include('emptyHeader') %>
+<div class="img_login_register">
+  <img src="/img/book5small.jpg" alt="" />
+</div>
+<div class="login_register_container">
+  <form class="login_register_form">
+    <h2>Register</h2>
+    <div class="formContainer">
+      <label for="name">Name</label>
+      <input
+        name="name"
+        type="text"
+        placeholder="Name"
+        required
+        class="formInput"
+      />
+      <p class="formErrorName"></p>
+    </div>
+    <div class="formContainer">
+      <label for="email">Email</label>
+      <input name="email" type="email" placeholder="email" class="formInput" />
+      <p class="formErrorEmail"></p>
+    </div>
+    <div class="formContainer">
+      <label for="password">Password</label>
+      <input
+        name="password"
+        type="password"
+        placeholder="Password"
+        class="formInput"
+      />
+      <p class="formErrorPassword"></p>
+    </div>
+    <div></div>
+    <div class="formContainer">
+      <button class="registerBtn" type="submit">Register</button>
+    </div>
+    <p class="account">Have an account? <a href="/user/login">Login</a></p>
+  </form>
+</div>
+
+<script>
+  const form = document.querySelector("form");
+  const formErrorPassword = document.querySelector(".formErrorPassword");
+  const formErrorEmail = document.querySelector(".formErrorEmail");
+
+  formErrorPassword.value = "";
+  formErrorEmail.value = "";
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    try {
+      const res = await fetch("http://localhost:3000/user/register", {
+        headers: { "Content-Type": "Application/json" },
+        method: "POST",
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      const data = await res.json();
+      if (data.email) {
+        formErrorEmail.innerHTML = data.email;
+      } else {
+        formErrorEmail.innerHTML = "";
+      }
+      if (data.password) {
+        formErrorPassword.innerHTML = data.password;
+      } else {
+        formErrorPassword.innerHTML = "";
+      }
+    } catch (error) {}
+  });
+</script>

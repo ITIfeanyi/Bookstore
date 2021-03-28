@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.headerContainer {
+  position: relative;
+  top: 0;
+}
+.header_nav {
+  padding: 0.4rem;
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  position: -webkit-sticky;
+}
+
+.nav_icon {
+  width: 23px;
+  height: 3px;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.8rem;
+  float: right;
+  cursor: pointer;
+  display: block;
+}
+.nav_icon > span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: inherit;
+  background-color: black;
+  border-radius: 15px;
+  transition: 0.5s linear 0.3s;
+}
+.nav_icon > span:nth-child(1) {
+  top: 0px;
+}
+.nav_icon > span:nth-child(2) {
+  top: 8px;
+}
+.nav_icon.rotate span:nth-child(1) {
+  transform: rotate(45deg);
+}
+.nav_icon.rotate span:nth-child(2) {
+  top: 0;
+  transform: rotate(-45deg);
+}
+.bookContainer {
+  position: absolute;
+  width: 100%;
+  background-color: black;
+  direction: rtl;
+  z-index: 100;
+}
+.bookSubcontainer {
+  display: none;
+}
+.bookContainer .bookSubcontainer.is-open {
+  display: block;
+}
+.bookSubcontainer li + li {
+  border-top: 1px solid white;
+}
+.bookSubcontainer a {
+  display: block;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.1rem;
+  color: white;
+}
+
+/* home */
+
+.hero img {
+  width: 100%;
+}
+.hero_centered {
+  position: absolute;
+  top: 8rem;
+  text-align: center;
+  color: black;
+  font-size: 1.1rem;
+  z-index: 0;
+  background-color: white;
+  width: 100%;
+  opacity: 0.7;
+}
+
+.img_login_register {
+  position: relative;
+  width: 100%;
+}
+.img_login_register img {
+  width: 100%;
+  height: 100%;
+}
+.login_register_container {
+  position: absolute;
+  width: 100%;
+  top: 10%;
+}
+.login_register_form {
+  background-color: white;
+  width: 80%;
+  margin: 2rem auto;
+  opacity: 0.8;
+  padding: 1rem;
+}
+.login_register_form h2 {
+  text-align: center;
+}
+.formContainer {
+  display: flex;
+  flex-flow: column;
+  margin-top: 1rem;
+}
+
+.formContainer input {
+  padding: 0.6rem 1rem;
+}
+.formContainer button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: #ccc;
+  border: 0;
+  border-radius: 4px;
+}
+.password_forgot {
+  display: flex;
+  justify-content: space-between;
+}
+.forgotPassword,
+.formErrorName,
+.formErrorPassword,
+.formErrorEmail {
+  color: red;
+  font-style: italic;
+  font-size: 13px;
+}
+.account {
+  padding-top: 1rem;
+}
