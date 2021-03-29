@@ -6,8 +6,10 @@ const Book = require("../models/bookSchema");
 
 router.get("/book/:ID", async (req, res) => {
   const id = req.params.ID;
+  const books = await Book.find({});
   const singleBook = await Book.findById(id);
   res.locals.singleBook = singleBook;
+  res.locals.books = books;
 
   const bookSize = (() => {
     if (singleBook.FileSize >= 1048576) {

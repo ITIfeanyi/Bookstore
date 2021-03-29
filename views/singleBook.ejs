@@ -1,17 +1,29 @@
 <%- include('header') %>
 <div class="singleBookContainer" data-bookID="<%=singleBook._id%> ">
   <div class="singleBookSubcontainer">
-    <div class="bookimg"><img src="<%= singleBook.imagePath %>" alt="" /></div>
-    <h3 class="singleBookTitle"><%= singleBook.BookTitle %></h3>
-    <p class="singleBookAuthor"><%= singleBook.BookAuthor %></p>
-    <div class="rating_comment">
-      <span class="bookRating"><i class="far fa-star"></i> 5.0 /5.0</span>
-
-      <span class="comment_count"
-        ><i class="far fa-comments"></i> 6 comments</span
-      >
+    <div class="singleBook_img">
+      <img src="<%= singleBook.imagePath %>" alt="" />
     </div>
-    <div class="bookDescription">bookDescription</div>
+    <div class="title_author_rating_container">
+      <h3 class="singleBookTitle"><%= singleBook.BookTitle %></h3>
+      <p class="singleBookAuthor"><%= singleBook.BookAuthor %></p>
+      <div class="rating_comment">
+        <span class="bookRating"><i class="far fa-star"></i> 5.0 /5.0</span>
+
+        <span class="comment_count"
+          ><i class="far fa-comments"></i> 6 comments</span
+        >
+      </div>
+    </div>
+
+    <div class="bookDescription">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem impedit
+        vero voluptas hic a labore repellat sit aut delectus doloribus, sed
+        excepturi cupiditate magnam, placeat aspernatur omnis. Porro, nobis
+        officia?
+      </p>
+    </div>
     <div class="bookInfoContainer">
       <div class="bookInfo">
         <span class="bookYear">Year:</span>
@@ -22,12 +34,22 @@
         <span class="bookPublisher"><%= singleBook.BookPublisher %> </span>
       </div>
       <div class="bookInfo">
+        <span class="bookLanguage">Language:</span>
+        <span class="bookLanguage"><%= singleBook.BookLanguage %> </span>
+      </div>
+      <div class="bookInfo">
+        <span class="bookPages">Pages:</span>
+        <span class="bookPages"><%= singleBook.BookPages %> </span>
+      </div>
+      <div class="bookInfo">
         <span class="bookISBN">ISBN:</span>
         <span class="bookISBN"><%= singleBook.ISBN %> </span>
       </div>
       <div class="bookInfo">
         <span class="bookfile">File:</span>
-        <span class="bookfile"><%= bookSize %> </span>
+        <span class="bookfile"
+          ><%= (singleBook.BookFieldName ).toUpperCase()%>, <%= bookSize %>
+        </span>
       </div>
     </div>
     <div
@@ -37,5 +59,16 @@
       Download (<%= singleBook.BookFieldName %>, <%= bookSize %> )
       <a download href="<%= singleBook.BookPath %>"> </a>
     </button>
+  </div>
+</div>
+</div>
+<hr />
+<%- include('popularBooks') %> 
+
+
+<div class="post_a_review_box">
+  <h3 class="post_title">Post Review</h3>
+  <div class="reviewcontainer">
+    <textarea placeholder="Say something about <%= singleBook.BookTitle %> " name="postreview" class="postreview"></textarea>
   </div>
 </div>

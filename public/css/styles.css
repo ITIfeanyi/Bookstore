@@ -189,6 +189,155 @@ a {
   width: 100%;
   margin: 1rem auto;
   border-radius: 8px;
-
   color: white;
+}
+
+/* single Book */
+.singleBookContainer {
+  position: relative;
+  width: 94%;
+  margin: 1rem auto;
+  font-size: 0.9rem;
+}
+.singleBookSubcontainer {
+  border: 2px solid #eee;
+}
+
+.singleBook_img {
+  height: 12rem;
+  width: 10rem;
+  margin: 0.6rem auto;
+  border: 2px solid #eee;
+}
+.singleBook_img > img {
+  width: 100%;
+  height: 100%;
+}
+.title_author_rating_container {
+  width: 96%;
+  margin: 0.3rem auto;
+}
+.singleBookTitle,
+.singleBookAuthor,
+.rating_comment {
+  font-size: 1rem;
+  padding: 0.3rem;
+}
+.singleBookTitle {
+  text-align: justify;
+}
+.singleBookAuthor {
+  color: rgb(124, 124, 223);
+  text-decoration: underline;
+  font-style: italic;
+}
+.rating_comment > span {
+  margin-right: 1rem;
+}
+.bookDescription,
+.bookInfoContainer {
+  width: 94%;
+  margin: 0.3rem auto;
+}
+.bookInfoContainer {
+  margin-top: 2rem;
+}
+.bookInfo {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.6rem;
+}
+.downloadBookcontainer {
+  width: 70%;
+  margin: 2rem auto;
+}
+.downloadBookcontainer button {
+  background-color: rgb(100, 143, 224);
+  border: 0;
+  padding: 0.7rem;
+  color: white;
+  font-weight: 600;
+  border-radius: 4px;
+  width: 100%;
+  margin: auto;
+}
+
+/* Popular Books =>  has an include */
+.interested_in {
+  position: relative;
+  margin-top: 1rem;
+}
+.interested_in h3 {
+  text-align: center;
+}
+.popularBook_container {
+  width: 90%;
+  margin: 1.5rem auto;
+}
+.popularBook_subconatainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 4px;
+}
+.popularBook {
+  background-color: tomato;
+  width: 3rem;
+  height: 5rem;
+}
+.popularBook_img {
+  width: 100%;
+  height: 100%;
+}
+.post_a_review_box {
+  margin-top: 1rem;
+  position: relative;
+  width: 94%;
+}
+.post_title {
+  text-align: center;
+}
+.reviewcontainer {
+  width: 80%;
+  margin: 0.4rem auto;
+  height: 5rem;
+}
+.postreview {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  border-radius: 4px;
+  color: black;
+  font-size: 1rem;
+}
+
+/* footer */
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #ccc;
+  width: 100%;
+  font-size: 14px;
+  padding-top: 0.5rem;
+}
+.footer_container {
+  width: 95%;
+  margin: 0.4rem auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.madeby {
+  width: 95%;
+  margin: 0.4rem auto;
+  text-align: center;
+}
+
+.madeby i {
+  color: red;
+}
+
+.ifeanyi {
+  font-style: italic;
 }

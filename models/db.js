@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  `mongodb://localhost:27017/bookstore`,
+  `${process.env.MONGO_URI}`,
   {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -15,4 +15,3 @@ mongoose.connect(
     console.log("App connected to db");
   }
 );
-// ${process.env.MONGO_URI}

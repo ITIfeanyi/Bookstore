@@ -3,22 +3,9 @@
 <div class="hero">
   <img src="img/book3small.jpg" />
   <div class="hero_centered">
-    <h2>Africa's Largest online Library</h2>
+    <h3>Africa's Largest online Library</h3>
     <h4>With over 22 million books & 12million articles</h4>
   </div>
 </div>
 
-<div class="homepage_popularbooks">
-  <h3>Most popular books</h3>
-  <div class="homepage_popularbooks_container">
-    <div class="homepage_popularbooks_subcontainer">
-      <% books.forEach((book) => { %>
-      <div class="bookContainer">
-        <a href="/book/<%=book._id%> ">
-          <img src="<%= book.imagePath %> " />
-        </a>
-      </div>
-      <%})%>
-    </div>
-  </div>
-</div>
+<%- include('popularBooks') %> <%- include('footer') %>

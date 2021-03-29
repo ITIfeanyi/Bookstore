@@ -5,6 +5,7 @@ const passport = require("passport");
 dotenv.config();
 const PORT = process.env.PORT;
 require("./models/db");
+
 const app = express();
 
 app.set("view engine", "ejs");

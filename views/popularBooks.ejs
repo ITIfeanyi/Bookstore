@@ -1,0 +1,14 @@
+<div class="interested_in">
+  <h3>Popular books:</h3>
+  <div class="popularBook_container">
+    <div class="popularBook_subconatainer">
+      <% books.forEach((book) => { %>
+      <div class="popularBook">
+        <a href="/book/<%=book._id%> ">
+          <img class="popularBook_img" src="<%= book.imagePath %> " />
+        </a>
+      </div>
+      <%})%>
+    </div>
+  </div>
+</div>
