@@ -1,63 +1,85 @@
 <%- include('header') %>
-<h1>Book Upload</h1>
 
-<form action="/upload" method="POST" enctype="multipart/form-data">
-  <div>
-    <label for="BookAuthor">Book Author</label>
-    <input type="text" name="BookAuthor" placeholder="Book Author" />
-  </div>
-  <div>
-    <label for="BookYear">Book Year</label>
-    <input type="text" name="BookYear" placeholder="Book year" />
-  </div>
-  <div>
-    <label for="BookLanguage">Language</label>
-    <input
-      type="text"
-      name="BookLanguage"
-      placeholder="Book Language"
-      required
-    />
-  </div>
-  <div>
-    <label for="BookPages">Book pages</label>
-    <input type="text" name="BookPages" placeholder="Book pages" />
-  </div>
-  <div>
-    <label for="BookPublisher">Book Publisher</label>
-    <input type="text" name="BookPublisher" placeholder="Book publisher" />
-  </div>
-  <div>
-    <label for="BookCategory"></label>
-    <select name="BookCategory">
-      <option value="computer/programming">Computer/Programming</option>
-      <option value="computer/css">Computer/CSS</option>
-      <option value="english/literature">English/Literature</option>
-      <option value="linguistic/english">English/Linguistic</option>
-      <option value="linguistic/english">English/Linguistic</option>
-    </select>
-  </div>
-  <div>
-    <label for="ISBN">ISBN</label>
-    <input type="text" name="ISBN" placeholder="ISBN" />
-  </div>
-  <div>
-    <label for="avatar">Image</label>
-    <input type="file" name="avatar" />
-  </div>
+<div class="formContainer_postBook">
+  <h2 class="postBook_upload">Upload a book</h2>
+  <form
+    class="uploadForm_postbook"
+    action="/upload"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <div class="formContainer">
+      <label for="BookAuthor">Book Author</label>
+      <input type="text" name="BookAuthor" placeholder="Book Author" />
+    </div>
+    <div class="formContainer">
+      <label for="BookYear">Book Year</label>
+      <input type="text" name="BookYear" placeholder="Book year" />
+    </div>
+    <div class="formContainer">
+      <label for="BookLanguage">Language</label>
+      <input
+        type="text"
+        name="BookLanguage"
+        placeholder="Book Language"
+        required
+      />
+    </div>
+    <div class="formContainer">
+      <label for="BookPages">Book pages</label>
+      <input type="text" name="BookPages" placeholder="Book pages" />
+    </div>
+    <div class="formContainer">
+      <label for="BookPublisher">Book Publisher</label>
+      <input type="text" name="BookPublisher" placeholder="Book publisher" />
+    </div>
+    <div class="formContainer">
+      <label for="BookCategory">Book Category </label>
+      <select name="BookCategory" class="formContainerSelect">
+        <option>Please select a category</option>
+        <option value="computer/programming">Computer/Programming</option>
+        <option value="computer/css">Computer/CSS</option>
+        <option value="english/literature">English/Literature</option>
+        <option value="linguistic/english">English/Linguistic</option>
+        <option value="linguistic/english">English/Linguistic</option>
+      </select>
+    </div>
+    <div class="formContainer">
+      <label for="ISBN">ISBN</label>
+      <input type="text" name="ISBN" placeholder="ISBN" />
+    </div>
+    <div class="formContainer">
+      <label for="BookRating">Book Rating</label>
+      <input
+        type="number"
+        name="BookRating"
+        placeholder="Book Rating -- Whole number, not decimal/floats"
+        min="1"
+        max="5"
+      />
+    </div>
+    <div class="formContainer">
+      <label for="BookDescription">Book Description</label>
+      <textarea
+        class="BookDescription_postupload"
+        name="BookDescription"
+        placeholder="Book Description is a description about the book and would reflect what this book is all about."
+      ></textarea>
+    </div>
 
-  <div>
-    <label for="pdf">PDF</label>
-    <input type="file" name="pdf" />
+    <div class="formContainer formContainerFile">
+      <label for="avatar">Image</label>
+      <input type="file" name="avatar" />
+    </div>
+
+    <div class="formContainer formContainerFile">
+      <label for="pdf">Book / Article</label>
+      <input type="file" name="pdf" />
+    </div>
+  </form>
+  <div class="formContainer_postupload">
+    <button class="formContainer_postupload_btn" type="submit">
+      Upload Book
+    </button>
   </div>
-
-  <button type="submit">submit</button>
-</form>
-
-<img src="https://bookstore-20.s3.us-east-2.amazonaws.com/amoysoy.jpg" />
-<a
-  download="pdf"
-  href="https://bookstore-20.s3.us-east-2.amazonaws.com/TypeScript+Programming+Language+by+TypeScript+Publishing.pdf"
-  download=""
-  >Download file</a
->
+</div>

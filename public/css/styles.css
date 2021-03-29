@@ -157,3 +157,38 @@ a {
 .account {
   padding-top: 1rem;
 }
+
+/* postBook  || upload book*/
+.formContainer_postBook {
+  position: relative;
+}
+.postBook_upload {
+  text-align: center;
+}
+.uploadForm_postbook {
+  width: 94%;
+  margin: 2rem auto;
+}
+.formContainerSelect {
+  padding: 0.6rem 1rem;
+}
+.BookDescription_postupload {
+  resize: none;
+  height: 8rem;
+}
+.formContainerFile {
+  border: 1px solid #ccc;
+}
+.formContainer_postupload {
+  margin: auto;
+  width: 40%;
+}
+.formContainer_postupload_btn {
+  background-color: rgb(32, 32, 179);
+  padding: 0.5rem 1rem;
+  width: 100%;
+  margin: 1rem auto;
+  border-radius: 8px;
+
+  color: white;
+}

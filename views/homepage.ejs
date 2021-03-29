@@ -8,4 +8,17 @@
   </div>
 </div>
 
-<h3>Most popular books</h3>
+<div class="homepage_popularbooks">
+  <h3>Most popular books</h3>
+  <div class="homepage_popularbooks_container">
+    <div class="homepage_popularbooks_subcontainer">
+      <% books.forEach((book) => { %>
+      <div class="bookContainer">
+        <a href="/book/<%=book._id%> ">
+          <img src="<%= book.imagePath %> " />
+        </a>
+      </div>
+      <%})%>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<%- include('header') %>
+<div class="singleBookContainer" data-bookID="<%=singleBook._id%> ">
+  <div class="singleBookSubcontainer">
+    <div class="bookimg"><img src="<%= singleBook.imagePath %>" alt="" /></div>
+    <h3 class="singleBookTitle"><%= singleBook.BookTitle %></h3>
+    <p class="singleBookAuthor"><%= singleBook.BookAuthor %></p>
+    <div class="rating_comment">
+      <span class="bookRating"><i class="far fa-star"></i> 5.0 /5.0</span>
+
+      <span class="comment_count"
+        ><i class="far fa-comments"></i> 6 comments</span
+      >
+    </div>
+    <div class="bookDescription">bookDescription</div>
+    <div class="bookInfoContainer">
+      <div class="bookInfo">
+        <span class="bookYear">Year:</span>
+        <span class="bookYear"><%= singleBook.BookYear %> </span>
+      </div>
+      <div class="bookInfo">
+        <span class="bookPublisher">Publisher:</span>
+        <span class="bookPublisher"><%= singleBook.BookPublisher %> </span>
+      </div>
+      <div class="bookInfo">
+        <span class="bookISBN">ISBN:</span>
+        <span class="bookISBN"><%= singleBook.ISBN %> </span>
+      </div>
+      <div class="bookInfo">
+        <span class="bookfile">File:</span>
+        <span class="bookfile"><%= bookSize %> </span>
+      </div>
+    </div>
+    <div
+  </div>
+  <div class="downloadBookcontainer">
+    <button type="submit" class="download">
+      Download (<%= singleBook.BookFieldName %>, <%= bookSize %> )
+      <a download href="<%= singleBook.BookPath %>"> </a>
+    </button>
+  </div>
+</div>

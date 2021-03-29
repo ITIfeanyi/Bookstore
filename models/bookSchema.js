@@ -11,6 +11,8 @@ const BookSchema = new mongoose.Schema(
     BookPublisher: String,
     BookCategory: String,
     BookFieldName: String,
+    BookDescription: String,
+    BookRating: Number,
     FileSize: Number,
     imagePath: String,
     BookPath: String,

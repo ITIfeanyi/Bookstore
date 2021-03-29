@@ -7,7 +7,7 @@ const Book = require("../models/bookSchema");
 
 router.get("/upload-book", (req, res) => {
   res.render("postBook", {
-    title: "Upload a book | Book-Store",
+    title: "Upload a book | Book-Africa",
   });
 });
 
@@ -16,7 +16,6 @@ const s3 = new aws.S3({
   secretAccessKey: `${process.env.AWS_ACCESS_PASSWORD}`,
 });
 
-const names = [];
 const upload = multer({
   storage: multerS3({
     s3: s3,
@@ -26,8 +25,6 @@ const upload = multer({
     },
     key: async (req, file, cb) => {
       const { originalname } = file;
-      const url = originalname.split(" ").join("+").replace(",", "%2C");
-      names.push(originalname);
       cb(null, originalname);
     },
   }),
@@ -38,7 +35,7 @@ router.post(
     { name: "avatar", maxCount: 1 },
     { name: "pdf", maxCount: 1 },
   ]),
-  (req, res) => {
+  async (req, res) => {
     const {
       BookYear,
       BookLanguage,
@@ -47,27 +44,36 @@ router.post(
       BookCategory,
       BookAuthor,
       ISBN,
+      BookDescription,
+      BookRating,
     } = req.body;
-    const newBook = new Book({});
-    Object.values(req.files.avatar).forEach((file) => {
-      newBook.imagePath = file.location;
-    });
-    Object.values(req.files.pdf).forEach((file) => {
-      const bookName = file.key.replace("(z-lib.org)", "");
-      newBook.BookTitle = bookName;
-      newBook.FileSize = file.size;
-      newBook.BookPath = file.location;
-      newBook.BookFieldName = file.fieldname;
-    });
-    newBook.BookYear = BookYear;
-    newBook.BookLanguage = BookLanguage;
-    newBook.BookPages = BookPages;
-    newBook.BookCategory = BookCategory;
-    newBook.BookPublisher = BookPublisher;
-    newBook.ISBN = ISBN;
-    newBook.BookAuthor = BookAuthor;
-    newBook.save();
-    res.json({ status: "OK", uploaded: " files uploaded" });
+    try {
+      const newBook = new Book({});
+      await Object.values(req.files.avatar).forEach((file) => {
+        newBook.imagePath = file.location;
+      });
+      await Object.values(req.files.pdf).forEach((file) => {
+        const bookName1 = file.key.replace("(z-lib.org)", "");
+        const bookName2 = bookName1.replace(".pdf", "");
+        const bookName = bookName2.replace(".txt", "");
+
+        newBook.BookTitle = bookName;
+        newBook.FileSize = file.size;
+        newBook.BookPath = file.location;
+        newBook.BookFieldName = file.fieldname;
+      });
+      newBook.BookYear = BookYear;
+      newBook.BookLanguage = BookLanguage;
+      newBook.BookPages = BookPages;
+      newBook.BookCategory = BookCategory;
+      newBook.BookPublisher = BookPublisher;
+      newBook.ISBN = ISBN;
+      newBook.BookRating = BookRating;
+      newBook.BookDescription = BookDescription;
+      newBook.BookAuthor = BookAuthor;
+      await newBook.save();
+      res.status(200);
+    } catch (err) {}
   }
 );
 
