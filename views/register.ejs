@@ -60,6 +60,10 @@
       });
 
       const data = await res.json();
+      console.log(data);
+      if (data.user) {
+        window.location.assign("/");
+      }
       if (data.email) {
         formErrorEmail.innerHTML = data.email;
       } else {
@@ -70,6 +74,8 @@
       } else {
         formErrorPassword.innerHTML = "";
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   });
 </script>

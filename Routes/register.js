@@ -31,8 +31,11 @@ router.post("/user/register", async (req, res) => {
       email,
       password,
     });
-    await newUser.save();
-    res.status(201).json({ user: newUser._id });
+    const user = await newUser.save();
+    if (user) {
+      res.status(201).json({ user: user._id });
+      res.redirect("/");
+    }
   } catch (err) {
     const errors = handleErrors(err);
     res.status(400).json(errors);

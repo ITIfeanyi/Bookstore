@@ -29,6 +29,7 @@ const upload = multer({
     },
   }),
 });
+
 router.post(
   "/upload",
   upload.fields([
@@ -47,6 +48,7 @@ router.post(
       BookDescription,
       BookRating,
     } = req.body;
+
     try {
       const newBook = new Book({});
       await Object.values(req.files.avatar).forEach((file) => {
@@ -72,8 +74,17 @@ router.post(
       newBook.BookDescription = BookDescription;
       newBook.BookAuthor = BookAuthor;
       await newBook.save();
+
+      if (newBook) {
+        res.redirect("/upload-book");
+      } else {
+        console.log("error occured");
+      }
+      console.log(newBook, "book");
       res.status(200);
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   }
 );
 

@@ -76,10 +76,17 @@
       <label for="pdf">Book / Article</label>
       <input type="file" name="pdf" />
     </div>
+    <div class="formContainer_postupload">
+      <button class="formContainer_postupload_btn" type="submit">
+        Upload Book
+      </button>
+    </div>
   </form>
-  <div class="formContainer_postupload">
-    <button class="formContainer_postupload_btn" type="submit">
-      Upload Book
-    </button>
-  </div>
 </div>
+<script>
+  let postupload_btn = document.querySelector(".formContainer_postupload_btn");
+  console.log(postupload_btn);
+  postupload_btn.addEventListener("click", () => {
+    console.log("click");
+  });
+</script>
