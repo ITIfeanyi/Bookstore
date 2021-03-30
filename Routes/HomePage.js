@@ -6,7 +6,7 @@ const Book = require("../models/bookSchema");
 
 router.get("/", async (req, res) => {
   try {
-    const books = await Book.find({});
+    const books = await Book.find();
     res.locals.books = books;
 
     res.render("homepage", {
