@@ -4,6 +4,7 @@ const session = require("express-session");
 const passport = require("passport");
 const flash = require("connect-flash");
 const cookieParser = require("cookie-parser");
+const cookieSession = require("cookie-session");
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -12,16 +13,17 @@ require("./models/db");
 const app = express();
 
 app.set("view engine", "ejs");
+app.set("trust proxy", 1);
 
 app.use(express.static("public"));
-
-app.use(
-  session({
-    resave: true,
-    saveUninitialized: true,
-    secret: `${process.env.SESSION_SECRET}`,
-  })
-);
+secret: `${process.env.SESSION_SECRET}`,
+  app.use(
+    cookieSession({
+      name: "session",
+      keys: ["key1", "key2"],
+      maxAge: 60 * 1000,
+    })
+  );
 app.use(cookieParser("keyboard cat"));
 app.use(flash());
 app.use((req, res, next) => {
