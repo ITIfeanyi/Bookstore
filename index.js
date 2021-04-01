@@ -19,7 +19,7 @@ app.use(express.static("public"));
 app.use(
   cookieSession({
     name: "sessionID",
-    secret: `${process.env.SESSION_SECRET}`,
+    secret: `${process.env.SESSION_SECRET_BookStore}`,
     keys: ["key1", "key2"],
     maxAge: 60 * 1000 * 60 * 24 * 2,
     cookie: {

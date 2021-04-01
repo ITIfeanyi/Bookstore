@@ -12,14 +12,14 @@ router.get("/upload-book", (req, res) => {
 });
 
 const s3 = new aws.S3({
-  accessKeyId: `${process.env.AWS_ACCESS_KEY}`,
-  secretAccessKey: `${process.env.AWS_ACCESS_PASSWORD}`,
+  accessKeyId: `${process.env.AWS_ACCESS_KEY_BookStore}`,
+  secretAccessKey: `${process.env.AWS_ACCESS_PASSWORD_BookStore}`,
 });
 
 const upload = multer({
   storage: multerS3({
     s3: s3,
-    bucket: `${process.env.AWS_BUCKET_NAME}`,
+    bucket: `${process.env.AWS_BUCKET_NAME_BookStore}`,
     metadata: (req, file, cb) => {
       cb(null, { fieldName: file.fieldname });
     },
