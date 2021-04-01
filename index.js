@@ -16,14 +16,17 @@ app.set("view engine", "ejs");
 app.set("trust proxy", 1);
 
 app.use(express.static("public"));
-secret: `${process.env.SESSION_SECRET}`,
-  app.use(
-    cookieSession({
-      name: "session",
-      keys: ["key1", "key2"],
-      maxAge: 60 * 1000,
-    })
-  );
+app.use(
+  cookieSession({
+    name: "sessionID",
+    secret: `${process.env.SESSION_SECRET}`,
+    keys: ["key1", "key2"],
+    maxAge: 60 * 1000 * 60 * 24 * 2,
+    cookie: {
+      httpOnly: true,
+    },
+  })
+);
 app.use(cookieParser("keyboard cat"));
 app.use(flash());
 app.use((req, res, next) => {
