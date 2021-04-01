@@ -1,17 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/UserSchema");
 
-const Book = require("../models/bookSchema");
+const bookSchema = require("../models/bookSchema");
 
 router.get("/", async (req, res) => {
   try {
-    const allbooks = await Book.find();
-    res.locals.books = allbooks;
+    const books = await bookSchema.find({});
+    res.locals.books = books;
 
     res.render("homepage", {
       title: "Home | Book-Africa",
-      books,
     });
   } catch (err) {
     console.log(err);
