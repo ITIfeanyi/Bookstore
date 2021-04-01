@@ -45,10 +45,13 @@ const login = require("./Routes/login");
 const register = require("./Routes/register");
 const singleBook = require("./Routes/signleBook");
 
-app.use("/", homepage);
-app.use("/", bookUpload);
-app.use("/", login);
-app.use("/", register);
-app.use("/", singleBook);
+app.get("/", (req, res) => {
+  res.send("hello world");
+});
+// app.use("/", homepage);
+// app.use("/", bookUpload);
+// app.use("/", login);
+// app.use("/", register);
+// app.use("/", singleBook);
 
 app.listen(PORT, () => console.log(`Application runing on port ${PORT}`));
