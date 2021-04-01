@@ -6,8 +6,8 @@ const Book = require("../models/bookSchema");
 
 router.get("/", async (req, res) => {
   try {
-    const books = await Book.find();
-    res.locals.books = books;
+    const allbooks = await Book.find();
+    res.locals.books = allbooks;
 
     res.render("homepage", {
       title: "Home | Book-Africa",
