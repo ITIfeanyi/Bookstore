@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const Book = require("../models/bookSchema");
+const BookSchema = require("../models/bookSchema");
 
 router.get("/book/:ID", async (req, res) => {
   try {
     const id = req.params.ID;
-    const books = await Book.find();
-    const singleBook = await Book.findById(id);
+    const books = await BookSchema.find({});
+    const singleBook = await BookSchema.findById(id);
     res.locals.singleBook = singleBook;
     res.locals.books = books;
 
@@ -22,8 +22,6 @@ router.get("/book/:ID", async (req, res) => {
     res.locals.bookSize = bookSize;
     res.render("singleBook", {
       title: singleBook.BookTitle,
-      singleBook,
-      bookSize,
     });
   } catch (err) {
     console.log(err);
