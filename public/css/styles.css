@@ -48,7 +48,7 @@ a {
   width: inherit;
   background-color: black;
   border-radius: 15px;
-  transition: 0.5s linear 0.3s;
+  transition: 0.2s linear 0.1s;
 }
 .nav_icon > span:nth-child(1) {
   top: 0px;
@@ -93,7 +93,7 @@ a {
 }
 .hero_centered {
   position: absolute;
-  top: 8rem;
+  top: 5rem;
   text-align: center;
   color: black;
   font-size: 1.1rem;
@@ -103,6 +103,45 @@ a {
   opacity: 0.7;
 }
 
+.search_container {
+  width: 80%;
+  margin: 1rem auto;
+  position: absolute;
+  top: 10rem;
+  left: calc(20% / 2);
+}
+.search_subcontainer {
+  width: 100%;
+  display: flex;
+  background-color: #9dbfaf;
+}
+.homepageSearch,
+.homepageSearchBtn {
+  border: 0;
+  outline: none;
+}
+.homepageSearch {
+  width: 100%;
+  border: 3px solid #9dbfaf;
+  border-right: none;
+  padding: 5px;
+  height: 36px;
+  border-radius: 5px 0 0 5px;
+  color: black;
+  font-size: 1rem;
+}
+
+.homepageSearchBtn {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #9dbfaf;
+  background-color: #9dbfaf;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+}
+
+/* register / signIn */
 .img_login_register {
   position: relative;
   width: 100%;
@@ -269,23 +308,46 @@ a {
 .interested_in {
   position: relative;
   margin-top: 1rem;
+  border: 1px solid #eee;
+  padding: 1rem 0 2rem 0;
+  border-radius: 5px;
 }
 .interested_in h3 {
   text-align: center;
 }
 .popularBook_container {
-  width: 90%;
+  width: 100%;
   margin: 1.5rem auto;
+  position: relative;
 }
 .popularBook_subconatainer {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  gap: 4px;
+  grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
+  gap: 3px;
 }
+@media (max-width: 25.8rem) {
+  .popularBook_subconatainer {
+    width: 96%;
+    margin: 1rem auto;
+  }
+}
+@media (min-width: 25.8rem) {
+  .popularBook_subconatainer {
+    width: 90%;
+    margin: 1rem auto;
+  }
+}
+@media (min-width: 25.8rem) {
+  .popularBook_subconatainer {
+    width: 90%;
+    margin: 1rem auto;
+  }
+}
+
 .popularBook {
-  background-color: tomato;
-  width: 3rem;
-  height: 5rem;
+  background-color: #eee;
+  width: 3.5rem;
+  height: 5.5rem;
 }
 .popularBook_img {
   width: 100%;
@@ -318,6 +380,7 @@ a {
   position: absolute;
   bottom: 0;
   left: 0;
+  right: 0;
   border-top: 1px solid #ccc;
   width: 100%;
   font-size: 14px;

@@ -46,9 +46,9 @@ const register = require("./Routes/register");
 const singleBook = require("./Routes/signleBook");
 
 app.use("/", homepage);
-// app.use("/", bookUpload);
-// app.use("/", login);
-// app.use("/", register);
-// app.use("/", singleBook);
+app.use("/", bookUpload);
+app.use("/", login);
+app.use("/", register);
+app.use("/", singleBook);
 
 app.listen(PORT, () => console.log(`Application runing on port ${PORT}`));
