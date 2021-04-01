@@ -45,10 +45,7 @@ const login = require("./Routes/login");
 const register = require("./Routes/register");
 const singleBook = require("./Routes/signleBook");
 
-app.get("/", (req, res) => {
-  res.send("hello world");
-});
-// app.use("/", homepage);
+app.use("/", homepage);
 // app.use("/", bookUpload);
 // app.use("/", login);
 // app.use("/", register);
