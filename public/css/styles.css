@@ -20,15 +20,16 @@ a {
   text-decoration: none;
 }
 .headerContainer {
-  position: relative;
+  position: sticky;
+  position: -webkit-sticky;
+  background-color: white;
+  z-index: 1000;
   top: 0;
 }
 .header_nav {
   padding: 0.4rem;
   background-color: white;
   border-bottom: 1px solid #eee;
-  position: sticky;
-  position: -webkit-sticky;
 }
 
 .nav_icon {
@@ -63,6 +64,34 @@ a {
   top: 0;
   transform: rotate(-45deg);
 }
+@media (min-width: 700px) {
+  .nav_icon {
+    display: none;
+  }
+  .headerContainer {
+    display: flex;
+  }
+  .headerContainer .bookContainer {
+    background-color: unset;
+    padding-top: 0.5rem;
+    margin-right: 0.5rem;
+    width: 98%;
+  }
+  .bookContainer .bookSubcontainer {
+    display: flex;
+    direction: ltr;
+    float: right;
+  }
+  .bookContainer .bookSubcontainer a {
+    padding: 0 0 0 1rem;
+    color: black;
+    margin: 0;
+    font-size: 1rem;
+  }
+  .bookContainer .bookSubcontainer li + li {
+    border-top: none;
+  }
+}
 .bookContainer {
   position: absolute;
   width: 100%;
@@ -96,11 +125,17 @@ a {
   top: 5rem;
   text-align: center;
   color: black;
-  font-size: 1.1rem;
   z-index: 0;
   background-color: white;
-  width: 100%;
+  width: 90%;
   opacity: 0.7;
+  left: calc(10% / 2);
+}
+@media (min-width: 500px) {
+  .hero_centered {
+    font-size: 1.1rem;
+    opacity: 0.8;
+  }
 }
 
 .search_container {
@@ -109,6 +144,16 @@ a {
   position: absolute;
   top: 10rem;
   left: calc(20% / 2);
+}
+@media (min-width: 500px) {
+  .hero_centered {
+    top: 8rem;
+  }
+  .search_container {
+    top: 13rem;
+    width: 70%;
+    left: calc(30% / 2);
+  }
 }
 .search_subcontainer {
   width: 100%;
@@ -128,7 +173,7 @@ a {
   height: 36px;
   border-radius: 5px 0 0 5px;
   color: black;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .homepageSearchBtn {
@@ -375,12 +420,37 @@ a {
   font-size: 1rem;
 }
 
+/* slide */
+.slide_container {
+  margin: 2rem auto;
+  width: 80%;
+}
+.slide_subcontainer {
+  overflow: auto;
+  white-space: nowrap;
+  padding: 1rem 0.5rem 1rem 0.2rem;
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.slide {
+  width: 80px;
+  height: 120px;
+  display: inline-block;
+  background-color: tomato;
+  margin-top: 1rem;
+}
+.slide + .slide {
+  margin-left: 0.3rem;
+}
+
 /* footer */
 .footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   border-top: 1px solid #ccc;
   width: 100%;
   font-size: 14px;

@@ -76,11 +76,12 @@ router.post(
       await newBook.save();
 
       if (newBook) {
-        res.redirect("/upload-book");
+        res.render("postBook", {
+          title: "Upload a book | Book-Africa",
+        });
       } else {
         console.log("error occured");
       }
-      console.log(newBook, "book");
       res.status(200);
     } catch (err) {
       console.log(err);
