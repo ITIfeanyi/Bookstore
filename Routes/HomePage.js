@@ -4,9 +4,13 @@ const router = express.Router();
 const bookSchema = require("../models/bookSchema");
 router.get("/", async (req, res) => {
   try {
-    let books = await bookSchema.find({});
+    //Popular books
+    let books = await bookSchema.find().where("BookRating").gte(4);
     res.locals.books = books;
 
+    //you might be interested in::
+    let lessPopularBooks = await bookSchema.find().lte("BookRating", 3);
+    res.locals.lessPopularBooks = lessPopularBooks;
     res.render("homepage", {
       title: "Home | Book-Africa",
     });
