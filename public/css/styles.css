@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
 *,
 *::after,
 *::before {
@@ -30,6 +32,19 @@ a {
   padding: 0.4rem;
   background-color: white;
   border-bottom: 1px solid #eee;
+}
+header {
+  display: flex;
+}
+.logo_text {
+  margin-right: 0.4rem;
+  font-family: "Lobster", sans-serif;
+}
+.logo_text a {
+  color: black;
+}
+.logo {
+  width: 22px;
 }
 
 .nav_icon {
@@ -137,7 +152,18 @@ a {
     opacity: 0.8;
   }
 }
-
+@media (min-width: 700px) {
+  .hero .hero_centered {
+    top: 15rem;
+    width: 60%;
+    left: calc(40% / 2);
+  }
+  .hero .search_container {
+    top: 20rem;
+    width: 60%;
+    left: calc(40% / 2);
+  }
+}
 .search_container {
   width: 80%;
   margin: 1rem auto;
@@ -283,6 +309,37 @@ a {
   margin: 1rem auto;
   font-size: 0.9rem;
 }
+@media (min-width: 415px) {
+  .singleBookContainer {
+    width: 70%;
+  }
+}
+@media (min-width: 520px) {
+  .singleBookContainer {
+    width: 55%;
+  }
+}
+@media (min-width: 700px) {
+  .singleBookContainer {
+    width: 90%;
+  }
+  .singleBook_sub_large_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .singleBook_popularbook_large {
+    width: 50%;
+  }
+  .singleBookSubcontainer {
+    margin-right: 2rem;
+    width: 50%;
+  }
+  .break {
+    display: none;
+  }
+}
+
 .singleBookSubcontainer {
   border: 2px solid #eee;
 }
@@ -301,12 +358,19 @@ a {
   width: 96%;
   margin: 0.3rem auto;
 }
+@media (min-width: 700px) {
+  .title_author_rating_container,
+  .title_author_rating_container .singleBookTitle {
+    text-align: center;
+  }
+}
 .singleBookTitle,
 .singleBookAuthor,
 .rating_comment {
   font-size: 1rem;
   padding: 0.3rem;
 }
+
 .singleBookTitle {
   text-align: justify;
 }
@@ -323,18 +387,25 @@ a {
   width: 94%;
   margin: 0.3rem auto;
 }
+
 .bookInfoContainer {
   margin-top: 2rem;
 }
 .bookInfo {
-  width: 50%;
+  width: 80%;
   display: flex;
+  text-align: end;
   justify-content: space-between;
   padding-bottom: 0.6rem;
 }
 .downloadBookcontainer {
   width: 70%;
   margin: 2rem auto;
+}
+@media (min-width: 700px) {
+  .bookInfoContainer {
+    width: 65%;
+  }
 }
 .downloadBookcontainer button {
   background-color: rgb(100, 143, 224);
@@ -365,9 +436,32 @@ a {
   margin: 1.5rem auto;
   position: relative;
 }
+@media (min-width: 700px) {
+  .interested_in {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+/* single page control */
+@media (min-width: 700px) {
+  .singleBook_sub_large_container .interested_in {
+    height: 91.5%;
+  }
+}
+
+/* specific for home page */
+.popularBooks_home .interested_in {
+  width: 98%;
+  margin: 1rem auto;
+}
+.popularBooks_home .popularBook_subconatainer {
+  grid-template-columns: repeat(auto-fill, minmax(70px, 2fr));
+}
+
 .popularBook_subconatainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
   gap: 3px;
 }
 @media (max-width: 25.8rem) {
@@ -382,10 +476,32 @@ a {
     margin: 1rem auto;
   }
 }
-@media (min-width: 25.8rem) {
-  .popularBook_subconatainer {
-    width: 90%;
-    margin: 1rem auto;
+
+@media (min-width: 700px) {
+  .popularBooks_home .popularBook_container {
+    width: 100%;
+  }
+  .popularBooks_home .popularBook_subconatainer {
+    grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  }
+  .popularBooks_home .popularBook {
+    width: 8rem;
+    height: 12rem;
+    margin-left: 0.3rem;
+  }
+}
+
+@media (min-width: 530px) {
+  .popularBooks_home .popularBook_container {
+    width: 100%;
+  }
+  .popularBooks_home .popularBook_subconatainer {
+    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+  }
+  .popularBooks_home .popularBook {
+    width: 6rem;
+    height: 8rem;
+    margin-left: 0.3rem;
   }
 }
 
@@ -402,6 +518,15 @@ a {
   margin-top: 1rem;
   position: relative;
   width: 94%;
+}
+@media (min-width: 700px) {
+  .post_a_review_box {
+    width: 60%;
+    margin: 3rem auto;
+  }
+  .post_title {
+    font-size: 1.2rem;
+  }
 }
 .post_title {
   text-align: center;
@@ -425,6 +550,7 @@ a {
   margin: 2rem auto;
   width: 80%;
 }
+
 .slide_subcontainer {
   overflow: auto;
   white-space: nowrap;
@@ -444,6 +570,18 @@ a {
   display: inline-block;
   background-color: tomato;
   margin-top: 1rem;
+}
+@media (min-width: 500px) {
+  .slide {
+    width: 120px;
+    height: 160px;
+  }
+}
+@media (min-width: 700px) {
+  .slide {
+    width: 160px;
+    height: 200px;
+  }
 }
 .slide + .slide {
   margin-left: 0.3rem;

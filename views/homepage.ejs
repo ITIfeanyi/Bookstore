@@ -1,7 +1,11 @@
 <%- include('header') %>
 
 <div class="hero">
-  <img src="img/book3small.jpg" />
+  <picture>
+    <source srcset="img/AfricaBookcover_large.jpg" media="(min-width: 600px)">
+    <img src="img/book3small.jpg" />
+
+  </picture>
   <div class="hero_centered">
     <h3>Africa's Largest online Library</h3>
     <h4>With over 22 million books & 12million articles</h4>
@@ -14,6 +18,8 @@
   </div>
 </div>
 
-<%- include('popularBooks') %>
+<div class="popularBooks_home">
+  <%- include('popularBooks') %>
+</div>
 <%- include('slideBooks')  %>
 <%- include('footer') %>

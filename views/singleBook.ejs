@@ -1,64 +1,68 @@
 <%- include('header') %>
 <div class="singleBookContainer" data-bookID="<%=singleBook._id%> ">
-  <div class="singleBookSubcontainer">
-    <div class="singleBook_img">
-      <img src="<%= singleBook.imagePath %>" alt="" />
-    </div>
-    <div class="title_author_rating_container">
-      <h3 class="singleBookTitle"><%= singleBook.BookTitle %></h3>
-      <p class="singleBookAuthor"><%= singleBook.BookAuthor %></p>
-      <div class="rating_comment">
-        <span class="bookRating"><i class="far fa-star"></i> 5.0 /<%= (singleBook.BookRating).toFixed(1) %> </span>
+  <div class="singleBook_sub_large_container">
+    <div class="singleBookSubcontainer">
+      <div class="singleBook_img">
+        <img src="<%= singleBook.imagePath %>" alt="" />
+      </div>
+      <div class="title_author_rating_container">
+        <h3 class="singleBookTitle"><%= singleBook.BookTitle %></h3>
+        <p class="singleBookAuthor"><%= singleBook.BookAuthor %></p>
+        <div class="rating_comment">
+          <span class="bookRating"><i class="far fa-star"></i> 5.0 /<%= (singleBook.BookRating).toFixed(1) %> </span>
 
-        <span class="comment_count"><i class="far fa-comments"></i> 6 comments</span>
+          <span class="comment_count"><i class="far fa-comments"></i> 6 comments</span>
+        </div>
       </div>
-    </div>
 
-    <div class="bookDescription">
-      <p>
-        <%= singleBook.bookDescription %>
-      </p>
-    </div>
-    <div class="bookInfoContainer">
-      <div class="bookInfo">
-        <span class="bookYear">Year:</span>
-        <span class="bookYear"><%= singleBook.BookYear %> </span>
+      <div class="bookDescription">
+        <p>
+          <%= singleBook.bookDescription %>
+        </p>
       </div>
-      <div class="bookInfo">
-        <span class="bookPublisher">Publisher:</span>
-        <span class="bookPublisher"><%= singleBook.BookPublisher %> </span>
+      <div class="bookInfoContainer">
+        <div class="bookInfo">
+          <span class="bookYear">Year:</span>
+          <span class="bookYear"><%= singleBook.BookYear %> </span>
+        </div>
+        <div class="bookInfo">
+          <span class="bookPublisher">Publisher:</span>
+          <span class="bookPublisher"><%= singleBook.BookPublisher %> </span>
+        </div>
+        <div class="bookInfo">
+          <span class="bookLanguage">Language:</span>
+          <span class="bookLanguage"><%= singleBook.BookLanguage %> </span>
+        </div>
+        <div class="bookInfo">
+          <span class="bookPages">Pages:</span>
+          <span class="bookPages"><%= singleBook.BookPages %> </span>
+        </div>
+        <div class="bookInfo">
+          <span class="bookISBN">ISBN:</span>
+          <span class="bookISBN"><%= singleBook.ISBN %> </span>
+        </div>
+        <div class="bookInfo">
+          <span class="bookfile">File:</span>
+          <span class="bookfile"><%= (singleBook.BookFieldName ).toUpperCase()%>, <%= bookSize %>
+          </span>
+        </div>
       </div>
-      <div class="bookInfo">
-        <span class="bookLanguage">Language:</span>
-        <span class="bookLanguage"><%= singleBook.BookLanguage %> </span>
-      </div>
-      <div class="bookInfo">
-        <span class="bookPages">Pages:</span>
-        <span class="bookPages"><%= singleBook.BookPages %> </span>
-      </div>
-      <div class="bookInfo">
-        <span class="bookISBN">ISBN:</span>
-        <span class="bookISBN"><%= singleBook.ISBN %> </span>
-      </div>
-      <div class="bookInfo">
-        <span class="bookfile">File:</span>
-        <span class="bookfile"><%= (singleBook.BookFieldName ).toUpperCase()%>, <%= bookSize %>
-        </span>
-      </div>
-    </div>
-    <div </div>
-      <div class="downloadBookcontainer">
-        <button type="submit" class="download">
+      <div </div>
+        <div class="downloadBookcontainer">
+          <button type="submit" class="download">
 
-          <a download="<%= singleBook.BookTitle %> " href=" <%= singleBook.BookPath %>">Download
-            (<%= singleBook.BookFieldName %>, <%= bookSize %> )
-          </a>
-        </button>
+            <a download="<%= singleBook.BookTitle %> " href=" <%= singleBook.BookPath %>">Download
+              (<%= singleBook.BookFieldName %>, <%= bookSize %> )
+            </a>
+          </button>
+        </div>
       </div>
+    </div>
+    <hr class="break" />
+    <div class="singleBook_popularbook_large">
+      <%- include('popularBooks') %>
     </div>
   </div>
-  <hr />
-  <%- include('popularBooks') %>
 
 
   <div class="post_a_review_box">
