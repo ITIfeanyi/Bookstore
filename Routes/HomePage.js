@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { ensureAuthenticated } = require("../config/auth");
 
 const bookSchema = require("../models/bookSchema");
 router.get("/", async (req, res) => {
@@ -14,10 +15,10 @@ router.get("/", async (req, res) => {
 
     //check if user is authenticated
     let authenticated = false;
-    if (req.isAuthenticated) {
+    if (req.isAuthenticated()) {
       authenticated = true;
+      res.locals.authenticated = authenticated;
     }
-    res.locals.authenticated = authenticated;
     res.render("homepage", {
       title: "Home | Book-Africa",
       authenticated,

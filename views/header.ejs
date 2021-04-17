@@ -27,9 +27,15 @@
     <div class="bookContainer">
       <ul class="bookSubcontainer">
         <li><a href="/">Home</a></li>
+        <% if(authenticated ) {%>
+        <li><a href="/logout">Logout</a></li>
+        <% }else {%>
         <li><a href="/user/login">Login</a></li>
         <li><a href="/user/register">Register</a></li>
+
+        <% } %>
         <li><a href="/upload-book">Upload a book</a></li>
+
       </ul>
     </div>
   </div>
