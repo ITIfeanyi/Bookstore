@@ -71,7 +71,13 @@
       <form action="/comments" method="post">
         <textarea placeholder="Say something about <%= singleBook.BookTitle %> " name="postreview"
           class="postreview"></textarea>
+        <%if(authenticated) {%>
         <button class="post_review_btn" type="submit">Post</button>
+
+        <%} else{%>
+        <button class="post_review_btn">Login</button>
+
+        <%} %>
       </form>
     </div>
   </div>

@@ -20,8 +20,15 @@ router.get("/book/:ID", async (req, res) => {
       return null;
     })();
     res.locals.bookSize = bookSize;
+    //check if user is authenticated
+    let authenticated = false;
+    if (req.isAuthenticated) {
+      authenticated = true;
+    }
+    res.locals.authenticated = authenticated;
     res.render("singleBook", {
       title: singleBook.BookTitle,
+      authenticated,
     });
   } catch (err) {
     console.log(err);
