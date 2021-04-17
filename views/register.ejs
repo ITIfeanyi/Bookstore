@@ -7,13 +7,7 @@
     <h2>Register</h2>
     <div class="formContainer">
       <label for="name">Name</label>
-      <input
-        name="name"
-        type="text"
-        placeholder="Name"
-        required
-        class="formInput"
-      />
+      <input name="name" type="text" placeholder="Name" required class="formInput" />
       <p class="formErrorName"></p>
     </div>
     <div class="formContainer">
@@ -23,12 +17,7 @@
     </div>
     <div class="formContainer">
       <label for="password">Password</label>
-      <input
-        name="password"
-        type="password"
-        placeholder="Password"
-        class="formInput"
-      />
+      <input name="password" type="password" placeholder="Password" class="formInput" />
       <p class="formErrorPassword"></p>
     </div>
     <div></div>
@@ -53,17 +42,18 @@
     const email = form.email.value;
     const password = form.password.value;
     try {
-      const res = await fetch("http://localhost:3000/user/register", {
+      const res = await fetch("https://bookafrica.herokuapp.com/user/register", {
         headers: { "Content-Type": "Application/json" },
         method: "POST",
         body: JSON.stringify({ name, email, password }),
       });
-
+      console.log(name, email, password)
       const data = await res.json();
-      console.log(data);
-      if (data.user) {
-        window.location.assign("/");
-      }
+      // console.log(data, "data");
+
+      // if (data.user) {
+      //   window.location.assign("/");
+      // }
       if (data.email) {
         formErrorEmail.innerHTML = data.email;
       } else {
@@ -75,7 +65,7 @@
         formErrorPassword.innerHTML = "";
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error.errors, "errors");
     }
   });
 </script>

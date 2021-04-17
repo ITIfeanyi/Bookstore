@@ -3,7 +3,6 @@ const router = express.Router();
 const User = require("../models/UserSchema");
 
 const handleErrors = (err) => {
-  console.log(err.code);
   const errors = { name: "", email: "", password: "" };
   if (err.message.includes("User validation failed")) {
     Object.values(err.errors).forEach(({ properties }) => {
@@ -25,6 +24,7 @@ router.get("/user/register", (req, res) => {
 
 router.post("/user/register", async (req, res) => {
   const { name, email, password } = req.body;
+  console.log(req.body);
   try {
     const newUser = await new User({
       name,
@@ -32,13 +32,17 @@ router.post("/user/register", async (req, res) => {
       password,
     });
     const user = await newUser.save();
-    if (user) {
-      res.status(201).json({ user: user._id });
+    if (user._id) {
       res.redirect("/");
+    } else {
+      req.flash("error_msg", "An error occurred, please try again.");
+      res.render("register", {
+        title: "Register | Book-Store",
+      });
     }
   } catch (err) {
     const errors = handleErrors(err);
-    res.status(400).json(errors);
+    res.status(400).json({ errors });
   }
 });
 
