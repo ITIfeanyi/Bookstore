@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
 
 const handleErrors = (err) => {
   const errors = { email: "", password: "" };
@@ -11,19 +12,13 @@ router.get("/user/login", (req, res) => {
   });
 });
 
-// router.post("/user/login", passport.authenticate('local', { failureRedirect: '/login' }),
-// function(req, res) {
-//   // If this function gets called, authentication was successful.
-//     // `req.user` contains the authenticated user.
-//   res.redirect('/');
-
-//   try {
-
-//   } catch (err) {
-//     const error = handleErrors(err)
-//     res.status(400).json(error)
-//   }
-//   console.log(email, password);
-// });
+router.post(
+  "/user/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/user/login",
+    failureFlash: true,
+  })
+);
 
 module.exports = router;

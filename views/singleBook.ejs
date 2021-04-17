@@ -68,7 +68,10 @@
   <div class="post_a_review_box">
     <h3 class="post_title">Post Review</h3>
     <div class="reviewcontainer">
-      <textarea placeholder="Say something about <%= singleBook.BookTitle %> " name="postreview"
-        class="postreview"></textarea>
+      <form action="/comments" method="post">
+        <textarea placeholder="Say something about <%= singleBook.BookTitle %> " name="postreview"
+          class="postreview"></textarea>
+        <button class="post_review_btn" type="submit">Post</button>
+      </form>
     </div>
   </div>

@@ -3,41 +3,43 @@ const dotenv = require("dotenv");
 const session = require("express-session");
 const passport = require("passport");
 const flash = require("connect-flash");
+const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const cookieSession = require("cookie-session");
+// const cookieSession = require("cookie-session");
 
 dotenv.config();
+const app = express();
 const PORT = process.env.PORT;
 require("./models/db");
-
-const app = express();
+//passport
+require("./config/passport")(passport);
 
 app.set("view engine", "ejs");
 app.set("trust proxy", 1);
 
+app.use(cors());
 app.use(express.static("public"));
 app.use(
-  cookieSession({
-    name: "sessionID",
-    secret: `${process.env.SESSION_SECRET_BookStore}`,
-    keys: ["key1", "key2"],
-    maxAge: 60 * 1000 * 60 * 24 * 2,
-    cookie: {
-      httpOnly: true,
-    },
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: true,
   })
 );
-app.use(cookieParser("keyboard cat"));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+
   next();
 });
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(passport.initialize());
-app.use(passport.session());
 
 const bookUpload = require("./Routes/PostNewBook");
 const homepage = require("./Routes/HomePage");

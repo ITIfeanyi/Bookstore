@@ -15,6 +15,17 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.message {
+  text-align: center;
+  font-size: 14px;
+  padding-top: 0.3rem;
+}
+.success {
+  color: green;
+}
+.errors {
+  color: red;
+}
 ul {
   list-style: none;
 }
@@ -28,6 +39,7 @@ a {
   z-index: 1000;
   top: 0;
 }
+
 .header_nav {
   padding: 0.4rem;
   background-color: white;
@@ -80,6 +92,9 @@ header {
   transform: rotate(-45deg);
 }
 @media (min-width: 700px) {
+  .header_nav {
+    border-bottom: none;
+  }
   .nav_icon {
     display: none;
   }
@@ -153,6 +168,10 @@ header {
   }
 }
 @media (min-width: 700px) {
+  .hero img {
+    height: 100vh;
+    object-fit: cover;
+  }
   .hero .hero_centered {
     top: 15rem;
     width: 60%;
@@ -544,7 +563,17 @@ header {
   color: black;
   font-size: 1rem;
 }
-
+.post_review_btn {
+  background-color: rgb(100, 143, 224);
+  padding: 0.5rem 1rem;
+  margin: 0.4rem auto;
+  border: 0;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1rem;
+  display: block;
+  width: 50%;
+}
 /* slide */
 .slide_container {
   margin: 2rem auto;
