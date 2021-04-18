@@ -42,7 +42,7 @@
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    fetch("http://localhost:3000/user/register", {
+    fetch("/user/register", {
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify({ name, email, password }),
