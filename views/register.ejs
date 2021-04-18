@@ -49,9 +49,9 @@
     })
       .then(res => res.json())
       .then(data => {
-         if (data.user) {
-      window.location.assign("/");
-    }
+        if (data.user) {
+          window.location.assign("http://localhost:3000/user/login");
+        }
 
         if (data.errors) {
           formErrorEmail.innerHTML = data.errors.email;
@@ -62,7 +62,7 @@
       .catch(errors => {
         console.log(errors)
       })
-   
+
 
 
 
