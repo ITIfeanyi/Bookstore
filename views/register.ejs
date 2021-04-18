@@ -5,6 +5,7 @@
 <div class="login_register_container">
   <form class="login_register_form">
     <h2>Register</h2>
+    <%- include("message") %>
     <div class="formContainer">
       <label for="name">Name</label>
       <input name="name" type="text" placeholder="Name" required class="formInput" />
@@ -13,7 +14,7 @@
     <div class="formContainer">
       <label for="email">Email</label>
       <input name="email" type="email" placeholder="email" class="formInput" />
-      <p class="formErrorEmail"></p>
+      <p class="formErrorEmail"> </p>
     </div>
     <div class="formContainer">
       <label for="password">Password</label>
@@ -35,36 +36,35 @@
 
   formErrorPassword.value = "";
   formErrorEmail.value = "";
-  form.addEventListener("submit", async (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    try {
-      const res = await fetch("https://bookafrica.herokuapp.com/user/register", {
-        headers: { "Content-Type": "Application/json" },
-        method: "POST",
-        body: JSON.stringify({ name, email, password }),
-      });
-      const data = await res.json();
-      console.log(data, "data");
-
-      // if (data.user) {
-      //   window.location.assign("/");
-      // }
-      if (data.email) {
-        formErrorEmail.innerHTML = data.email;
-      } else {
-        formErrorEmail.innerHTML = "";
-      }
-      if (data.password) {
-        formErrorPassword.innerHTML = data.password;
-      } else {
-        formErrorPassword.innerHTML = "";
-      }
-    } catch (error) {
-      console.log(error, "errors");
+    fetch("http://localhost:3000/user/register", {
+      headers: { "Content-Type": "application/json" },
+      method: "POST",
+      body: JSON.stringify({ name, email, password }),
+    })
+      .then(res => res.json())
+      .then(data => {
+         if (data.user) {
+      window.location.assign("/");
     }
+
+        if (data.errors) {
+          formErrorEmail.innerHTML = data.errors.email;
+          formErrorPassword.innerHTML = data.errors.password;
+
+        }
+      })
+      .catch(errors => {
+        console.log(errors)
+      })
+   
+
+
+
   });
 </script>
