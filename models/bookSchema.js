@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const mongoosastic = require("mongoosastic");
 
 const BookSchema = new mongoose.Schema(
   {
@@ -19,6 +20,10 @@ const BookSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+BookSchema.plugin(mongoosastic, {
+  hosts: ["localhost:9200"],
+});
 
 const Book = mongoose.model("Book", BookSchema);
 

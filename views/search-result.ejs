@@ -1,0 +1,44 @@
+<%- include('header') %>
+
+
+<% if(data.length === 0) {%>
+<p class="result_notFound"> Search result for <span class="notFound_text"><%= query %> </span> not found</p>
+<% } else{%>
+<h3 class="search_result_h3">Results for <%= query %> </h3>
+<div class="result_container">
+    <% data.forEach(result => {%>
+    <div class="search_result_container_top">
+        <a class="search_result_subcontainer" href="/book/<%=result._id%> ">
+            <div class="search_result_container_two">
+                <span class="search_img_container"><img src="<%= result._source.imagePath %> " /> </span>
+                <span class="search_details_container">
+                    <h4 class="search_header"> <%= result._source.BookTitle %></h4>
+                    <p class="search_BookAuthor"><%= result._source.BookAuthor %></p>
+                    <div class="search_publisher">
+                        <span class="bookPublisher shift10px">Publisher:</span>
+                        <span class="bookPublisher"><%= result._source.BookPublisher %> </span>
+                    </div>
+                    <div class="search_year_container">
+                        <span class="searchYear shift10px">Year:</span>
+                        <span class="searchYear"><%= result._source.BookYear %> </span>
+                    </div>
+                    <div class="searchbook_lang">
+                        <span class="searchLanguage shift10px">Language:</span>
+                        <span class="searchLanguage"><%= result._source.BookLanguage %> </span>
+                    </div>
+                    <div class="searchInfo">
+                        <span class="searchfile shift10px">File:</span>
+                        <span class="searchfile"><%= (result._source.BookFieldName ).toUpperCase()%>,
+                            <%= result._source.FileSize >= 1048576 ? (result._source.FileSize / 1048576).toFixed(2) + "MB":  (result._source.FileSize / 1048576).toFixed(0) + "KB" %>
+                        </span>
+                    </div>
+                </span>
+            </div>
+        </a>
+    </div>
+    <% }) %>
+</div>
+<% } %>
+
+
+<%- include('footer') %>

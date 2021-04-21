@@ -10,16 +10,23 @@
     <h3>Africa's Largest online Library</h3>
     <h4>With over 22 million books & 12million articles</h4>
   </div>
-  <div class="search_container">
-    <div class="search_subcontainer">
-      <input class="homepageSearch" type="text" placeholder="Find Books">
-      <button class="homepageSearchBtn" type="submit"><i class="fas fa-search"></i> </button>
+  <form action="/search" method="post" class="searchForm">
+    <div class="search_container">
+      <div class="search_subcontainer">
+
+
+        <input name="q" class="homepageSearch" type="text" placeholder="Find Books">
+        <button class="homepageSearchBtn" type="submit"><i class="fas fa-search"></i> </button>
+
+      </div>
     </div>
-  </div>
 </div>
+</form>
 
 <div class="popularBooks_home">
   <%- include('popularBooks') %>
 </div>
 <%- include('slideBooks')  %>
-<%- include('footer') %>
+<div class="homeFooter_container">
+  <%- include('footer') %>
+</div>
