@@ -21,7 +21,13 @@ const BookSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-BookSchema.plugin(mongoosastic);
+//ensure to remove the protocol on local development
+BookSchema.plugin(mongoosastic, {
+  // hosts: ["localhost:9200"],
+  host: "localhost",
+  port: "9200",
+  protocol: "https",
+});
 
 const Book = mongoose.model("Book", BookSchema);
 
