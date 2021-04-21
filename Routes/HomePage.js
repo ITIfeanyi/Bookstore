@@ -48,10 +48,10 @@ router.post("/search", (req, res) => {
   res.redirect("/search?q=" + req.body.q);
 });
 
-router.get("/search", (req, res) => {
+router.get("/search", async (req, res) => {
   const search_term = req.query.q;
   if (search_term) {
-    bookSchema.search(
+    await bookSchema.search(
       {
         query_string: { query: search_term },
       },

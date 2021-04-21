@@ -21,9 +21,7 @@ const BookSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-BookSchema.plugin(mongoosastic, {
-  hosts: ["localhost:9200"],
-});
+BookSchema.plugin(mongoosastic);
 
 const Book = mongoose.model("Book", BookSchema);
 
