@@ -15,7 +15,7 @@ router.get("/book/:ID", async (req, res) => {
         return (singleBook.FileSize / 1048576).toFixed(2) + "MB";
       }
       if (singleBook.FileSize >= 1024) {
-        return (singleBook.FileSize / 1048576).toFixed(0) + "KB";
+        return (singleBook.FileSize / 1023).toFixed(0) + "KB";
       }
       return null;
     })();
