@@ -88,8 +88,15 @@ router.post(
       await newBook.save();
 
       if (newBook) {
+        let authenticated = false;
+        if (req.isAuthenticated()) {
+          authenticated = true;
+          res.locals.authenticated = authenticated;
+        }
+
         res.render("postBook", {
           title: "Upload a book | Book-Africa",
+          authenticated,
         });
       } else {
         console.log("error occured");
