@@ -1,22 +1,24 @@
 const express = require("express");
 const router = express.Router();
-const { ensureAuthenticated } = require("../config/auth");
-
 const bookSchema = require("../models/bookSchema");
 
-bookSchema.createMapping(async function (err, mapping) {
-  try {
-    if (err) {
-      console.log("error creating mapping");
-    } else {
-      //SYNC the database and elasticsearch
-      await bookSchema.synchronize();
-      console.log("Mapping created");
-    }
-  } catch (error) {
-    console.log(error);
-  }
-});
+// const { ensureAuthenticated } = require("../config/auth");
+
+// bookSchema.createMapping(function (err, mapping) {
+//   if (err) {
+//     console.log("error creating mapping");
+//   } else {
+//     console.log("Mapping created");
+//   }
+// });
+// //SYNC the database and elasticsearch
+// let stream = bookSchema.synchronize();
+
+// stream.on("data", function () {});
+// stream.on("close", function () {});
+// stream.on("error", function (err) {
+//   console.log(err);
+// });
 
 router.get("/", async (req, res) => {
   try {
@@ -58,19 +60,11 @@ router.get("/search", async (req, res) => {
       (err, result) => {
         if (err) return err;
         const data = result.hits.hits.map((hit) => {
+          console.log(hit);
           return hit;
         });
 
-        // const bookSize = (() => {
-        //   if (singleBook.FileSize >= 1048576) {
-        //     return (singleBook.FileSize / 1048576).toFixed(2) + "MB";
-        //   }
-        //   if (singleBook.FileSize >= 1024) {
-        //     return (singleBook.FileSize / 1048576).toFixed(0) + "KB";
-        //   }
-        //   return null;
-        // })();
-        //check if user is authenticated
+        // check if user is authenticated
         let authenticated = false;
         if (req.isAuthenticated()) {
           authenticated = true;

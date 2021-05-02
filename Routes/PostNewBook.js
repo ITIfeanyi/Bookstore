@@ -6,9 +6,21 @@ const router = express.Router();
 const Book = require("../models/bookSchema");
 
 router.get("/upload-book", (req, res) => {
-  res.render("postBook", {
-    title: "Upload a book | Book-Africa",
-  });
+  try {
+    //check if user is authenticated
+    let authenticated = false;
+    if (req.isAuthenticated()) {
+      authenticated = true;
+      res.locals.authenticated = authenticated;
+    }
+
+    res.render("postBook", {
+      title: "Upload a book | Book-Africa",
+      authenticated,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 const s3 = new aws.S3({

@@ -2,12 +2,7 @@
 
 <div class="formContainer_postBook">
   <h2 class="postBook_upload">Upload a book</h2>
-  <form
-    class="uploadForm_postbook"
-    action="/upload"
-    method="POST"
-    enctype="multipart/form-data"
-  >
+  <form class="uploadForm_postbook" action="/upload" method="POST" enctype="multipart/form-data">
     <div class="formContainer">
       <label for="BookAuthor">Book Author</label>
       <input type="text" name="BookAuthor" placeholder="Book Author" />
@@ -18,12 +13,7 @@
     </div>
     <div class="formContainer">
       <label for="BookLanguage">Language</label>
-      <input
-        type="text"
-        name="BookLanguage"
-        placeholder="Book Language"
-        required
-      />
+      <input type="text" name="BookLanguage" placeholder="Book Language" required />
     </div>
     <div class="formContainer">
       <label for="BookPages">Book pages</label>
@@ -42,6 +32,10 @@
         <option value="english/literature">English/Literature</option>
         <option value="linguistic/english">English/Linguistic</option>
         <option value="linguistic/english">English/Linguistic</option>
+        <option value="Business Plus">Business plus</option>
+        <option value="Psychology">Psychology</option>
+        <option value="Fiction">Fiction</option>
+
       </select>
     </div>
     <div class="formContainer">
@@ -50,21 +44,12 @@
     </div>
     <div class="formContainer">
       <label for="BookRating">Book Rating</label>
-      <input
-        type="number"
-        name="BookRating"
-        placeholder="1 - 5 -- Whole number, not decimal/floats"
-        min="1"
-        max="5"
-      />
+      <input type="number" name="BookRating" placeholder="1 - 5 -- Whole number, not decimal/floats" min="1" max="5" />
     </div>
     <div class="formContainer">
       <label for="BookDescription">Book Description</label>
-      <textarea
-        class="BookDescription_postupload"
-        name="BookDescription"
-        placeholder="Book Description is a description about the book and would reflect what this book is all about."
-      ></textarea>
+      <textarea class="BookDescription_postupload" name="BookDescription"
+        placeholder="Book Description is a description about the book and would reflect what this book is all about."></textarea>
     </div>
 
     <div class="formContainer formContainerFile">

@@ -23,10 +23,7 @@ const BookSchema = new mongoose.Schema(
 
 //ensure to remove the protocol on local development
 BookSchema.plugin(mongoosastic, {
-  // hosts: ["localhost:9200"],
-  host: "localhost",
-  port: "9200",
-  protocol: "https",
+  hosts: ["localhost:9200"],
 });
 
 const Book = mongoose.model("Book", BookSchema);
