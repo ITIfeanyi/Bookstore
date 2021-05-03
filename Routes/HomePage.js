@@ -1,5 +1,7 @@
 const express = require("express");
 const algoliasearch = require("algoliasearch");
+const dotenv = require("dotenv");
+dotenv.config();
 const router = express.Router();
 const bookSchema = require("../models/bookSchema");
 const client = algoliasearch(
