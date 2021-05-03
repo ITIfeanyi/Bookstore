@@ -2,7 +2,10 @@ const express = require("express");
 const algoliasearch = require("algoliasearch");
 const router = express.Router();
 const bookSchema = require("../models/bookSchema");
-const client = algoliasearch("XSCYCIGR8N", "09de26dfb0f4dc73ff8f1307405beeea");
+const client = algoliasearch(
+  `${process.env.APPLICATION_ID}`,
+  `${process.env.ADMIN_API_KEY}`
+);
 const index = client.initIndex("BookAfrica");
 
 const uploadToAlgolia = async () => {
