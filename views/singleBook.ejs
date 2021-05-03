@@ -51,7 +51,8 @@
         <div class="downloadBookcontainer">
           <button type="submit" class="download">
 
-            <a download="<%= singleBook.BookTitle %> " href=" <%= singleBook.BookPath %>">Download
+            <a download="<%= singleBook.BookTitle %> " href=" <%= singleBook.BookPath %>"><i
+                class="fas fa-download"></i> Download
               (<%= singleBook.BookFieldName %>, <%= bookSize %> )
             </a>
           </button>
@@ -75,7 +76,8 @@
         <button class="post_review_btn" type="submit">Post</button>
 
         <%} else{%>
-        <a href="/user/login" class="post_review_btn">Login</a>
+        <a href="/user/login" class="post_review_btn"><i style="margin-right:0.4rem;" class="fas fa-sign-in-alt"></i>
+          <strong>Login</strong></a>
 
         <%} %>
       </form>

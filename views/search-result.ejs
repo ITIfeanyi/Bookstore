@@ -1,5 +1,18 @@
 <%- include('header') %>
 
+<div class="for_search_result">
+    <form action="/search" method="post" class="">
+        <div class="">
+            <div class="search_subcontainer">
+                <input name="q" class="homepageSearch" id="search" autocomplete="off" type="search" spellcheck="false"
+                    placeholder="Find Books">
+                <button class="homepageSearchBtn" type="submit"><i class="fas fa-search"></i> </button>
+
+            </div>
+        </div>
+</div>
+</form>
+</div>
 
 <% if(data.length === 0) {%>
 <p class="result_notFound"> Search result for <span class="notFound_text"><%= query %> </span> not found</p>
@@ -8,28 +21,28 @@
 <div class="result_container">
     <% data.forEach(result => {%>
     <div class="search_result_container_top">
-        <a class="search_result_subcontainer" href="/book/<%=result._id%> ">
+        <a class="search_result_subcontainer" href="/book/<%=result.objectID%> ">
             <div class="search_result_container_two">
-                <span class="search_img_container"><img src="<%= result._source.imagePath %> " /> </span>
+                <span class="search_img_container"><img src="<%= result.imagePath %> " /> </span>
                 <span class="search_details_container">
-                    <h4 class="search_header"> <%= result._source.BookTitle %></h4>
-                    <p class="search_BookAuthor"><%= result._source.BookAuthor %></p>
+                    <h4 class="search_header"> <%= result.BookTitle %></h4>
+                    <p class="search_BookAuthor"><%= result.BookAuthor %></p>
                     <div class="search_publisher">
                         <span class="bookPublisher shift10px">Publisher:</span>
-                        <span class="bookPublisher"><%= result._source.BookPublisher %> </span>
+                        <span class="bookPublisher"><%= result.BookPublisher %> </span>
                     </div>
                     <div class="search_year_container">
                         <span class="searchYear shift10px">Year:</span>
-                        <span class="searchYear"><%= result._source.BookYear %> </span>
+                        <span class="searchYear"><%= result.BookYear %> </span>
                     </div>
                     <div class="searchbook_lang">
                         <span class="searchLanguage shift10px">Language:</span>
-                        <span class="searchLanguage"><%= result._source.BookLanguage %> </span>
+                        <span class="searchLanguage"><%= result.BookLanguage %> </span>
                     </div>
                     <div class="searchInfo">
                         <span class="searchfile shift10px">File:</span>
-                        <span class="searchfile"><%= (result._source.BookFieldName ).toUpperCase()%>,
-                            <%= result._source.FileSize >= 1048576 ? (result._source.FileSize / 1048576).toFixed(2) + "MB":  (result._source.FileSize / 1048576).toFixed(0) + "KB" %>
+                        <span class="searchfile"><%= (result.BookFieldName ).toUpperCase()%>,
+                            <%= result.FileSize >= 1048576 ? (result.FileSize / 1048576).toFixed(2) + "MB":  (result.FileSize / 1048576).toFixed(0) + "KB" %>
                         </span>
                     </div>
                 </span>
@@ -41,4 +54,4 @@
 <% } %>
 
 
-<%- include('footer') %>
+<!-- <%- include('footer') %> -->

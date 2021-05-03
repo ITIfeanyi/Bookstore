@@ -246,8 +246,10 @@ header {
   width: 100%;
   top: 10%;
 }
+
 .login_register_form {
   background-color: white;
+  max-width: 35rem;
   width: 80%;
   margin: 2rem auto;
   opacity: 0.8;
@@ -485,6 +487,11 @@ header {
 }
 
 /* search result */
+.for_search_result {
+  max-width: 30rem;
+  width: 70%;
+  margin: 2rem auto;
+}
 .result_notFound {
   width: 70%;
   margin: 6rem auto;
