@@ -50,7 +50,7 @@
       .then(res => res.json())
       .then(data => {
         if (data.user) {
-          window.location.assign("http://localhost:3000/user/login");
+          window.location.assign("https://bookafrica.herokuapp.com/user/login");
         }
 
         if (data.errors) {
