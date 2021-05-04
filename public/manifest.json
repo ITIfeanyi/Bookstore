@@ -1,0 +1,8 @@
+{
+  "name": "Book Africa",
+  "short_name": "Book Africa",
+  "display": "standalone",
+  "background_color": "#oc8fcc",
+  "theme_color": "045d87",
+  "orientation": "portrait-primary"
+}
