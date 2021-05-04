@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const BookSchema = require("../models/bookSchema");
-
+const reviewSchema = require("../models/reviewSchema");
 router.get("/book/:ID", async (req, res) => {
   try {
     const id = req.params.ID;
@@ -25,13 +25,38 @@ router.get("/book/:ID", async (req, res) => {
     if (req.isAuthenticated()) {
       authenticated = true;
     }
+
+    //send username into ejs
+    res.locals.name = null;
+    if (req.user) {
+      res.locals.name = req.user.name;
+    }
     res.render("singleBook", {
       title: singleBook.BookTitle,
       authenticated,
-      name: req.user.name || null,
     });
   } catch (err) {
     console.log(err);
   }
 });
+
+router.post("/book/:ID", async (req, res) => {
+  try {
+    const { bookId } = req.body;
+    throw new Error("We are working on this section. Thank you");
+    const book = await BookSchema.findById(bookId);
+    // if (book) {
+    //   const review = await new reviewSchema({
+    //     comment: req.body.review,
+    //     bookId: req.body.bookId,
+    //   });
+    // await review.save();
+    // } else {
+    //   throw new Error("The book above does not exist anymore");
+    // }
+  } catch (error) {
+    res.status(500).json("We are working on this section. Thank you");
+  }
+});
+
 module.exports = router;

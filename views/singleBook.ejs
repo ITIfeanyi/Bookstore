@@ -68,11 +68,13 @@
 
   <div class="post_a_review_box">
     <h3 class="post_title">Post Review</h3>
+    <p class="reviewError errors"></p>
     <div class="reviewcontainer">
-      <form action="/comments" method="post">
+      <form data-id="<%=singleBook._id %>">
         <textarea placeholder="Say something about <%= singleBook.BookTitle %> " name="postreview"
           class="postreview"></textarea>
         <%if(authenticated) {%>
+
         <button class="post_review_btn" type="submit">Post</button>
 
         <%} else{%>
@@ -83,3 +85,26 @@
       </form>
     </div>
   </div>
+
+
+  <script>
+    const form = document.querySelector("form")
+    form.addEventListener("submit", async (e) => {
+      const reviewError = document.querySelector(".reviewError")
+
+      try {
+        e.preventDefault()
+        const book = form.getAttribute("data-id")
+        const res = await fetch(`http://localhost:3000/book/:ID`, {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify({ review: form.postreview.value, bookId: `${book}` })
+        })
+        const data = await res.json()
+        reviewError.innerHTML = data
+      } catch (error) {
+        console.log(error)
+      }
+    })
+
+  </script>
