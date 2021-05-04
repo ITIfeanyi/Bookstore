@@ -46,11 +46,13 @@ const homepage = require("./Routes/HomePage");
 const login = require("./Routes/login");
 const register = require("./Routes/register");
 const singleBook = require("./Routes/signleBook");
+const reactInstantSearch = require("./Routes/reactInstantSearch");
 
 app.use("/", homepage);
 app.use("/", bookUpload);
 app.use("/", login);
 app.use("/", register);
 app.use("/", singleBook);
+app.use("/", reactInstantSearch);
 
 app.listen(PORT, () => console.log(`Application runing on port ${PORT}`));
