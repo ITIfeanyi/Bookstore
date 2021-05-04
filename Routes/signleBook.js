@@ -28,6 +28,7 @@ router.get("/book/:ID", async (req, res) => {
     res.render("singleBook", {
       title: singleBook.BookTitle,
       authenticated,
+      name: req.user.name || null,
     });
   } catch (err) {
     console.log(err);

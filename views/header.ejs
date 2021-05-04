@@ -19,7 +19,23 @@
         <h3 class="logo_text"><a href="/">Book Africa</a></h3>
         <img class="logo" src="/img/book.png" />
       </header>
+
+      <span class="hello_name">
+        <strong>
+          <% if(name !== null) {%>
+          <h4>Hello, <%= name  %>
+          </h4>
+          <%}else  {%>
+          <a href="/user/login">
+            <h4 class="log">Login</h4>
+          </a>
+          <% } %>
+
+        </strong>
+      </span>
+
       <nav>
+
         <div class="nav_icon">
           <span></span>
           <span></span>
@@ -39,6 +55,12 @@
         <% } %>
         <li><a href="/upload-book">Upload a book</a></li>
 
+        <strong class="nav_hello_name">
+          <% if(name !== null) {%>
+          <h4>Hello, <%= name  %>
+          </h4>
+          <% } %>
+        </strong>
       </ul>
     </div>
   </div>

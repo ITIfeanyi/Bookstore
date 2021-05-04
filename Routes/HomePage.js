@@ -1,7 +1,5 @@
 const express = require("express");
 const algoliasearch = require("algoliasearch");
-const dotenv = require("dotenv");
-dotenv.config();
 const router = express.Router();
 const bookSchema = require("../models/bookSchema");
 const client = algoliasearch(
@@ -33,7 +31,7 @@ const uploadToAlgolia = async () => {
 router.get("/", async (req, res) => {
   try {
     // upload books to algolia
-    uploadToAlgolia();
+    // uploadToAlgolia();
 
     //Popular books
     let books = await bookSchema.find().where("BookRating").gte(4);
@@ -49,6 +47,12 @@ router.get("/", async (req, res) => {
       authenticated = true;
       res.locals.authenticated = authenticated;
     }
+    //send username into ejs
+    res.locals.name = null;
+    if (req.user) {
+      res.locals.name = req.user.name;
+    }
+
     res.render("homepage", {
       title: "Home | Book-Africa",
       authenticated,
@@ -79,6 +83,7 @@ router.get("/search", async (req, res) => {
         data: hits,
         title: `BookAfrica | ${search_term}`,
         authenticated,
+        name: req.user.name || null,
       });
     })
     .catch((err) => {

@@ -44,6 +44,7 @@ a {
   padding: 0.4rem;
   background-color: white;
   border-bottom: 1px solid #eee;
+  display: flex;
 }
 header {
   display: flex;
@@ -57,6 +58,32 @@ header {
 }
 .logo {
   width: 22px;
+}
+
+/* hello name and nav_hello_name */
+.hello_name {
+  position: absolute;
+  right: 2.5rem;
+  top: 0.5rem;
+  color: #1f7bad;
+}
+
+.nav_hello_name {
+  visibility: hidden;
+}
+.log {
+  text-decoration: underline;
+  color: #1f7bad;
+}
+@media (min-width: 700px) {
+  .hello_name {
+    display: none;
+  }
+  .nav_hello_name {
+    visibility: visible;
+    margin-left: 2rem;
+    color: #1f7bad;
+  }
 }
 
 .nav_icon {
