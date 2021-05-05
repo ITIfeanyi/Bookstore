@@ -24,13 +24,13 @@
 
       <span class="hello_name">
         <strong>
-          <% if(name !== null) {%>
-          <h4>Hello, <%= name  %>
-          </h4>
-          <%}else  {%>
+          <% if(!name || name === undefined || name === "") {%>
           <a href="/user/login">
             <h4 class="log">Login</h4>
           </a>
+          <%}else  {%>
+          <h4>Hello, <%= name.name  %>
+          </h4>
           <% } %>
 
         </strong>

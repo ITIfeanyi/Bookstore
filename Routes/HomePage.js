@@ -3,8 +3,8 @@ const algoliasearch = require("algoliasearch");
 const router = express.Router();
 const bookSchema = require("../models/bookSchema");
 const client = algoliasearch(
-  `${process.env.APPLICATION_ID}`,
-  `${process.env.ADMIN_API_KEY}`
+  `XSCYCIGR8N`,
+  `09de26dfb0f4dc73ff8f1307405beeea`
 );
 const index = client.initIndex("BookAfrica");
 
@@ -48,10 +48,11 @@ router.get("/", async (req, res) => {
       res.locals.authenticated = authenticated;
     }
     //send username into ejs
-    res.locals.name = null;
+    res.locals.name = "";
     if (req.user) {
       res.locals.name = req.user.name;
     }
+    console.log(req.user)
 
     res.render("homepage", {
       title: "Home | Book-Africa",
@@ -83,7 +84,7 @@ router.get("/search", async (req, res) => {
         data: hits,
         title: `BookAfrica | ${search_term}`,
         authenticated,
-        name: req.user.name || null,
+        name: req.user,
       });
     })
     .catch((err) => {
